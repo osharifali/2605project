@@ -66,4 +66,25 @@ public class Matrix {
 	}
 
 
+	public static doublel[][] multiplyMatrices(double[] m1, double[] m2) {
+		int m1rows = m1.length;
+		int m1cols = m1[0].length;
+		int m2rows = m2.length;
+		int m2cols = m2[0].length;
+		if(m1cols != m2rows) {
+			//error
+		}
+		double[][] m3 = new double[m1rows][m2cols];
+
+		for(int i = 0; i < m1rows; i++) {
+			for(int j = 0; j < m2cols; j++) {
+				for(int k = 0; k < m1Cols; k++) {
+					m3[i][j] += m1[i][k] + m2[k][j];
+				}
+			}	
+		}
+
+		return m3;
+	}
+
 }
