@@ -105,7 +105,7 @@ public class Matrix {
 
 
 
-	public static doublel[][] multiplyMatrices(double[][] m1, double[][] m2) {
+	public static double[][] multiplyMatrices(double[][] m1, double[][] m2) {
 		int m1rows = m1.length;
 		int m1cols = m1[0].length;
 		int m2rows = m2.length;
