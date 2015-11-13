@@ -157,20 +157,29 @@ public class Matrix {
 	}
 	
 	public static double trace(double[][] m){
-            double sum = 0;
-            for (int row = 0; row < m.length; row++) {
-                for (int col = 0; col < m[row].length; col++) {
-                    System.out.print(m[row][col] + "\t");
-                    if(row == col) {
-                        sum += m[row][col];
+        double sum = 0;
+        for (int row = 0; row < m.length; row++) {
+            for (int col = 0; col < m[row].length; col++) {
+                System.out.print(m[row][col] + "\t");
+                if(row == col) {
+                    sum += m[row][col];
 
-                    }
                 }
-                System.out.println();
             }
-            System.out.println(sum);
-            return sum;
+            System.out.println();
+        }
+        System.out.println(sum);
+        return sum;
+    }
+
+    public static void print(double[][] m) {
+    	for (int i = 0; i < m.length; i++) {
+    		for (int j = 0; j < m[0].length; j++) {
+    			System.out.print(m[i][j] + "  ");
+    		}
+    		System.out.println();
     	}
+    }
 
 
 }
