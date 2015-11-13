@@ -105,7 +105,7 @@ public class Matrix {
 
 
 
-	public static doublel[][] multiplyMatrices(double[] m1, double[] m2) {
+	public static doublel[][] multiplyMatrices(double[][] m1, double[][] m2) {
 		int m1rows = m1.length;
 		int m1cols = m1[0].length;
 		int m2rows = m2.length;
@@ -117,7 +117,7 @@ public class Matrix {
 
 		for(int i = 0; i < m1rows; i++) {
 			for(int j = 0; j < m2cols; j++) {
-				for(int k = 0; k < m1Cols; k++) {
+				for(int k = 0; k < m1cols; k++) {
 					m3[i][j] += m1[i][k] + m2[k][j];
 				}
 			}	
@@ -125,5 +125,36 @@ public class Matrix {
 
 		return m3;
 	}
+
+	public static double[][] multiplyVectors(double[] v1, double[] v2) {
+		if(v1.length != v2.length) {
+			//error
+		}
+		int vLength = v1.length;
+		double[][] m3 = new double[vLength][vLength];
+		for(int i = 0; i < vLength; i++) {
+			for(int j = 0; j < vLength; j++) {
+				m3[i][j] = v1[i] * v2[j];
+			}
+		}
+		return m3;
+	}
+
+	public static double[] multiplyMatrixVector(double[] v1, double[][] m1) {
+		int vLength = v1.length;
+		int m1rows = m1.length;
+		int m1cols = m1[0].length;
+		if(vLength != m1cols) {
+			//error
+		}
+		double[] m3 = new double[m1rows];
+		for(int i = 0; i < m1rows; i++) {
+			for(int j = 0; j < m1cols; j++) {
+				m3[i] = v1[j] * m1[i][j];
+			}
+		}
+		return m3;
+	}
+
 
 }
