@@ -155,6 +155,22 @@ public class Matrix {
 		}
 		return m3;
 	}
+	
+	public static double trace(double[][] m){
+            double sum = 0;
+            for (int row = 0; row < m.length; row++) {
+                for (int col = 0; col < m[row].length; col++) {
+                    System.out.print(m[row][col] + "\t");
+                    if(row == col) {
+                        sum += m[row][col];
+
+                    }
+                }
+                System.out.println();
+            }
+            System.out.println(sum);
+            return sum;
+    	}
 
 
 }
