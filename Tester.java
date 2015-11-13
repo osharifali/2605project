@@ -6,5 +6,6 @@ public class Tester {
 		one[1][0] = 4;
 		one[1][1] = 19;
 		System.out.println(Matrix.determinant(one));
+		Matrix.print(one);
 	}
 }
