@@ -181,5 +181,11 @@ public class Matrix {
     	}
     }
 
+    public static void print(double[] v) {
+    	for (int i = 0; i < v.length; i++) {
+    		System.out.print(v[i] + "  ");
+    	}
+    }
+
 
 }

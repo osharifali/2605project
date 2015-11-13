@@ -20,9 +20,14 @@ public class PowerMethod {
 			converges = ((currEigenValue / oldEigenValue) != 1);
 			iterations++;
 			if (iterations >= maxIterations) {
-				return null;
+				throw new RunTimeException("Max number of iterations reached.");
 			}
 		}
+			System.out.println("Number of iterations: " + iterations);
+			System.out.println("Approximate eigenvalue: " + currEigenValue);
+			System.out.println("Approximate eigenvector: \n");
+			Matrix.print(approximation);
+
 			return approximation;
 	}
 }
