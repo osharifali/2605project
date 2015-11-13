@@ -118,7 +118,7 @@ public class Matrix {
 		for(int i = 0; i < m1rows; i++) {
 			for(int j = 0; j < m2cols; j++) {
 				for(int k = 0; k < m1cols; k++) {
-					m3[i][j] += m1[i][k] + m2[k][j];
+					m3[i][j] += m1[i][k] * m2[k][j];
 				}
 			}	
 		}
