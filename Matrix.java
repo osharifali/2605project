@@ -155,7 +155,21 @@ public class Matrix {
 		}
 		return m3;
 	}
-	
+
+	public static double[][] getIdentityMatrix(int m, int n) {
+		double[][] identity = new double[m][n];
+		for(int i = 0; i < m; i++) {
+			for(int j = 0; j < n; j++) {
+				if (i==j) {
+					identity[i][j] = 1.0;
+				} else {
+					identity[i][j] = 0.0;
+				}
+			}
+		}
+		return identity;
+	}
+
 	public static double trace(double[][] m){
         double sum = 0;
         for (int row = 0; row < m.length; row++) {
