@@ -170,6 +170,14 @@ public class Matrix {
 		return identity;
 	}
 
+	public static double norm(double[][] m) {
+		double norm = 0;
+		for(int i = 0; i < m.length; i++) {
+			norm = norm + (m[i][0]*m[i][0]);
+		}
+		return Math.sqrt(norm);
+	}
+
 	public static double trace(double[][] m){
         double sum = 0;
         for (int row = 0; row < m.length; row++) {

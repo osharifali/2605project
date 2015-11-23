@@ -12,7 +12,7 @@ public class LUQRTest {
 			Matrix.print(ludecomp.getL());
 			System.out.println("hiiiiii");
 			Matrix.print(ludecomp.getU());
-			//System.out.println("err: " + error);
+			System.out.println("err: " + ludecomp.getError());
 
 			GivensQR gqr = new GivensQR(alu);
 			gqr.qr_fact_givens();

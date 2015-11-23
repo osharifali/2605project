@@ -30,7 +30,7 @@ public class LUDecomposition {
 		double[][] lu = Matrix.multiplyMatrices(l, u);
 		//a is still unchanged
 		double[][] aminuslu = Matrix.subtract(lu, a);
-		//double error = Matrix.norm(aminuslu);
+		double error = Matrix.norm(aminuslu);
 		return error;
 	}
 
