@@ -45,7 +45,7 @@ public class Matrix {
 		return m1;
 	}
 
-	public static double[] scalarMultiply(int scalar, double[] v1) {
+	public static double[] scalarMultiply(double scalar, double[] v1) {
 		for (int i = 0; i < v1.length; i++) {
 			v1[i] = scalar * v1[i];
 		}
@@ -170,10 +170,10 @@ public class Matrix {
 		return identity;
 	}
 
-	public static double norm(double[][] m) {
+	public static double norm(double[] v) {
 		double norm = 0;
-		for(int i = 0; i < m.length; i++) {
-			norm = norm + (m[i][0]*m[i][0]);
+		for(int i = 0; i < v.length; i++) {
+			norm = norm + (v[i]*v[i]);
 		}
 		return Math.sqrt(norm);
 	}

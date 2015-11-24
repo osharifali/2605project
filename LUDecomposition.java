@@ -23,16 +23,16 @@ public class LUDecomposition {
 		return u;
 	}
 
-	public double getError() {
-		if (l == null || u == null) {
-			//error
-		}
-		double[][] lu = Matrix.multiplyMatrices(l, u);
-		//a is still unchanged
-		double[][] aminuslu = Matrix.subtract(lu, a);
-		double error = Matrix.norm(aminuslu);
-		return error;
-	}
+	// public double getError() {
+	// 	if (l == null || u == null) {
+	// 		//error
+	// 	}
+	// 	double[][] lu = Matrix.multiplyMatrices(l, u);
+	// 	//a is still unchanged
+	// 	double[][] aminuslu = Matrix.subtract(lu, a);
+	// 	double error = Matrix.norm(aminuslu);
+	// 	return error;
+	// }
 
 	public void lu_fact() {
 		double[][] ident = Matrix.getIdentityMatrix(m, m);
