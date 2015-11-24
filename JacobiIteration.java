@@ -2,32 +2,44 @@
 public class JacobiIteration {
 	
 	public double[] jacobi_iter(double[][] a, double[] x, double[] b, double tolerance, int maxIter) {
-		double[][] diag = new double[a.length][m[0].length];
+		double[][] diag = new double[a.length][a[0].length];
 		double[] x1 = x;
+		double[][] low = a;
+		double[][] upp = a;
 		for(int i = 0; i < a.length; i++) {
 			for(int j =0; j < a[0].length; j++) {
-				if(i==j) diag[i][j] = a[i][j];
-				else diag[i][j] = 0.0;
+				if(i==j)  {
+					diag[i][j] = a[i][j];
+					upp[i][j] = a[i][j];
+					low[i][j] = a[i][j];
+				}
+				if(i>j) {
+					upp[i][j] = a[i][j];
+					low[i][j] = 0.0;
+					diag[i][j] = 0.0;
+				} else {
+					low[i][j] = a[i][j];
+					upp[i][j] = 0.0;
+					diag[i][j] = 0.0;
+				}
 			}
 		}
-		//since 3x3:
-		double[][] low = {{0.0, a[0][1], a[0][2]}, {0.0, 0.0, a[1][2]}, {0.0, 0.0, 0.0}};
-		double[][] upp = {{0.0, 0.0, 0.0}, {a[1][0], 0.0, 0.0}, {a[2][0], a[2][1], 0.0}};
 		for(int i = 0; i < maxIter; i++) {
-			double[][] negLU = scalarMultiply(-1.0, a);
-			double[] ax = Matrix.multiplyMatrixVector(x, negLU);
-			double[] axplusb = Matrix.add(ax, b)
-			x1 = Matrix.forwardSubstitution(diag, axplusb); //however this is called in vishaaks's thing
-			double[] xminusx1 = Matrix.subtract(x, x1);
-			double norm = Matrix.norm(xminusx1);
-			if(norm < tolerance) {
+			double[][] negLowUp = Matrix.scalarMultiply(-1, Matrix.add(low, upp));
+			double[] ax = Matrix.multiplyMatrixVector(x, negLowUp);
+			double[] axplusb = Matrix.add(ax, b);
+			// x1 = Matrix.forwardSubstitution(diag, axplusb); 
+			//^fix that with however that is called in vishaaks's thing
+			double[] err = Matrix.subtract(x, x1);
+			double normerr = Matrix.norm(xminusx1);
+			if(normerr < tolerance) {
 				System.out.println("converged");
 				return x1;
 			} else {
 				x = x1;
 			}
 		} //didn't return out the for loop
-		System.out.println("didn't converge");
+		System.out.println("didn't converge in "+ maxIter + " iterations");
 		return x1;
 	}
 
