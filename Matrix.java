@@ -178,6 +178,21 @@ public class Matrix {
 		return Math.sqrt(norm);
 	}
 
+	public static double[] forwardSubstitution(double[][] a, double[] b) {
+		double[] x = new double[a[0].length];
+		for(int i =0; i <a[0].length; i++) {
+			x[i] = 0;
+		}
+		for(int i = 0; i < a[0].length; i++) {
+			double sumTot = 0;
+			for(int j = 0; j<i; j++) {
+				sumTot = sumTot + a[i][j] * x[j];
+			}
+			x[i] = (b[i] - sumTot) / a[i][i];
+		}
+		return x;
+	}
+
 	public static double trace(double[][] m){
         double sum = 0;
         for (int row = 0; row < m.length; row++) {

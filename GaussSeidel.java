@@ -30,7 +30,7 @@ public class GaussSeidel {
         	double[][] negU = Matrix.scalarMultiply(-1, upp);
         	double[] negUx = Matrix.multiplyMatrixVector(x, negU);
         	double[] negUXplusb = Matrix.add(negUx, b);
-        	// x1 = Matrix.forwardSubstitution(dplusl, negUXplusb);
+        	x1 = Matrix.forwardSubstitution(dplusl, negUXplusb);
         	double[] err = Matrix.subtract(x1, x);
         	if(Matrix.norm(err) < tolerance) {
         		System.out.println("converged");
