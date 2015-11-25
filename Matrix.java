@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Matrix {
 
 	public static double[][] add(double[][] m1, double[][] m2) {
@@ -229,5 +232,18 @@ public class Matrix {
     	System.out.println();
     }
 
+    public static ArrayList<double[]> create3x1Matrices() {
+        ArrayList<double[]> matrices = new ArrayList<>();
+        Random r = new Random();
+        float upperBound = 1;
+        for (int  k = 0; k < 100; k++) {
+            double[] temp = new double[3];
+            for (int i = 0; i < temp.length; i++) {
+                temp[i] = r.nextFloat() * ((upperBound * -1) - upperBound) + upperBound;
+            }
+            matrices.add(temp);
+        }
+        return matrices;
+    }
 
 }

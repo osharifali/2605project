@@ -1,5 +1,10 @@
+import java.util.ArrayList;
 
 public class JacobiIteration {
+
+	private int iterToConv = 0;
+	private ArrayList<double[]> x0List = new ArrayList<>();
+	private ArrayList<double[]> xnList = new ArrayList<>();
 	
 	public double[] jacobi_iter(double[][] a, double[] x, double[] b, double tolerance, int maxIter) {
 		// Matrix.print(a);
@@ -43,6 +48,7 @@ public class JacobiIteration {
 			double normerr = Matrix.norm(err);
 			if(normerr < tolerance) {
 				System.out.println("converged");
+				iterToConv = i;
 				return x1;
 			} else {
 				// System.out.println(i);
@@ -50,7 +56,23 @@ public class JacobiIteration {
 			}
 		} //didn't return out the for loop
 		System.out.println("didn't converge in "+ maxIter + " iterations");
+		iterToConv = -1;
 		return x1;
 	}
 
+	public int getIterationCount() {
+		return iterToConv;
+	}
+
+	public ArrayList<double[]> calculatexnList() {
+		x0List = Matrix.create3x1Matrices();
+		double[][] a = {{1, (1.0/2.0), (1.0/3.0)}, {(1.0/2.0), 1, (1.0/4.0)}, {(1.0/3.0), (1.0/4.0), 1}};
+		double[] b = {0.1, 0.1, 0.1};
+		double tolerance = 0.00005;
+		int maxIter = 100;
+		for(double[] x : x0List) {
+			xnList.add(jacobi_iter(a, x, b, tolerance, maxIter));
+		}
+		return xnList;
+	}
 }
