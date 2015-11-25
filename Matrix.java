@@ -183,12 +183,14 @@ public class Matrix {
 		for(int i =0; i <a[0].length; i++) {
 			x[i] = 0;
 		}
+		// Matrix.print(a);
 		for(int i = 0; i < a[0].length; i++) {
 			double sumTot = 0;
 			for(int j = 0; j<i; j++) {
-				sumTot = sumTot + a[i][j] * x[j];
+				sumTot = sumTot + (a[i][j] * x[j]);
 			}
-			x[i] = (b[i] - sumTot) / a[i][i];
+			double xi = (b[i] - sumTot) / a[i][i];
+			x[i] = xi;
 		}
 		return x;
 	}
@@ -216,12 +218,15 @@ public class Matrix {
     		}
     		System.out.println();
     	}
+    	System.out.println();
     }
 
     public static void print(double[] v) {
     	for (int i = 0; i < v.length; i++) {
     		System.out.print(v[i] + "  ");
     	}
+    	System.out.println();
+    	System.out.println();
     }
 
 
